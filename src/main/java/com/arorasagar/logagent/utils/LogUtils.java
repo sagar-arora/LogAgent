@@ -59,8 +59,8 @@ public class LogUtils {
         writer.name("lastUploadedMD5Hash").value(logFile.getLastUploadedMD5Hash());
         writer.name("path");
         writer.beginObject();
-        writer.name("bucket").value(logFile.getPath().getBucket());
-        writer.name("object").value(logFile.getPath().getObject());
+      //  writer.name("bucket").value(logFile.getPath().getBucket());
+     //   writer.name("object").value(logFile.getPath().getObject());
         writer.endObject();
         writer.endObject();
       }

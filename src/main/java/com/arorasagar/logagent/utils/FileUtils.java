@@ -1,6 +1,6 @@
 package com.arorasagar.logagent.utils;
 
-import com.arorasagar.logagent.LogPusherConfig;
+import com.arorasagar.logagent.LogAgentConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.zip.GZIPOutputStream;
 
 public final class FileUtils {
-  private static Logger logger = LoggerFactory.getLogger(FileUtils.class);
+  private static final Logger logger = LoggerFactory.getLogger(FileUtils.class);
   private FileUtils() {}
 
   public static byte[] calculateMd5ofFileBytes(File file) throws IOException, NoSuchAlgorithmException {
@@ -55,9 +55,9 @@ public final class FileUtils {
     return result.toString();
   }
 
-  public static List<File> discoverFiles(final LogPusherConfig.LogConfig logConfig) {
+  public static List<File> discoverFiles(final LogAgentConfig.LogFileConfig logFileConfig) {
     final List<File> result = new ArrayList<>();
-    final Path thisDir = Paths.get(logConfig.getLocalDirectory());
+    final Path thisDir = Paths.get(logFileConfig.getLocalDirectory());
 
     try {
       Files.walkFileTree(thisDir, new SimpleFileVisitor<Path>() {
@@ -65,7 +65,7 @@ public final class FileUtils {
         @Override
         public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
             throws IOException {
-          if (logConfig.accepts(file.toString())) {
+          if (logFileConfig.accepts(file.toString())) {
             File theFile = file.toFile();
             if (theFile.canRead()) {
               result.add(theFile);
@@ -76,7 +76,7 @@ public final class FileUtils {
 
         @Override
         public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
-          if (logConfig.isRecursive() || thisDir.equals(dir)) {
+          if (logFileConfig.isRecursive() || thisDir.equals(dir)) {
             return FileVisitResult.CONTINUE;
           }
           return FileVisitResult.SKIP_SUBTREE;
@@ -102,8 +102,12 @@ public final class FileUtils {
     return prefix + suffix;
   }
 
+
   public static Path getCompressedFilePathToUpload(File tmpDirectory, File inputFile) {
-    return Paths.get(new File(tmpDirectory, join(inputFile.getAbsolutePath(), ".gz")).getPath());
+
+    String inputFileGzip = join(inputFile.getName(), ".gz");
+    return Paths.get(new File(tmpDirectory, inputFileGzip).getPath());
+    //return Paths.get(new File(tmpDirectory, join(inputFile.getAbsolutePath(), ".gz")).getPath());
   }
 
   public static File getArchivedFile(File file) {
@@ -123,7 +127,7 @@ public final class FileUtils {
         gos.write(buffer, 0, len);
       }
     } catch (Exception e) {
-      logger.info("Exception occured {}", e.getMessage());
+      logger.info("Exception occurred {}", e.getMessage());
     }
     }
   }

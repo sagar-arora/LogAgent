@@ -1,0 +1,28 @@
+{
+  "tmpDir" : "C:\\Users\\arora\\temp",
+  "delayBetweenCycles": 10,
+  "retentionPeriod": 3600,
+  "recoveryPath": "C:\\Users\\arora\\temp\\recovery.json",
+  "logFileConfigs": [
+    {
+    "localDirectory": "C:\\Users\\arora\\workplace\\log_agent\\LogAgent",
+    "includes": [
+      ".*\\.log\\..*"
+    ],
+    "excludes": [],
+    "path": {
+      "bucket": "arsagar-test-bucket",
+      "object": "test"
+    }
+  },
+  {
+    "localDirectory" : "C:\\Users\\arora\\workplace\\log_agent\\LogAgent",
+    "includes": [".*\\.log"],
+    "excludes": [],
+    "path": {
+      "bucket" : "arsagar-test-bucket",
+      "object" : "test"
+    }
+  }
+  ]
+}

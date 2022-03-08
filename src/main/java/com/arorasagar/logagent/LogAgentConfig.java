@@ -16,9 +16,9 @@ import java.util.regex.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public final class LogPusherConfig {
+public final class LogAgentConfig {
 
-  List<LogConfig> logConfigs;
+  List<LogFileConfig> logFileConfigs;
   String tmpDir;
   int delayBetweenCycles;
   String recoveryPath;
@@ -40,7 +40,7 @@ public final class LogPusherConfig {
   @AllArgsConstructor
   @NoArgsConstructor
   @Builder
-  public static final class LogConfig {
+  public static final class LogFileConfig {
     private String localDirectory;
     private List<Pattern> includes;
     private List<Pattern> excludes;
@@ -53,7 +53,7 @@ public final class LogPusherConfig {
       if (startIdx != 0) {
         return null;
       }
-      return FileUtils.makeRelative(input.substring(path2Match.length()));
+      return FileUtils.makeRelative(input.substring(path2Match.length())) ;
     }
 
     public Matcher findMatch(String input) {
@@ -85,20 +85,20 @@ public final class LogPusherConfig {
   }
 
 
-  public static LogPusherConfig fromJsonFile(File jsonFile) throws IOException {
+  public static LogAgentConfig fromJsonFile(File jsonFile) throws IOException {
     ObjectMapper objectMapper = new ObjectMapper();
-    LogPusherConfig
-        logPusherConfig = objectMapper.readValue(jsonFile, LogPusherConfig.class);
+    LogAgentConfig
+            logAgentConfig = objectMapper.readValue(jsonFile, LogAgentConfig.class);
 
-    if (logPusherConfig.getLogConfigs() == null || logPusherConfig.getLogConfigs().size() == 0) {
-
-    }
-
-    if (logPusherConfig.delayBetweenCycles <= 0) {
+    if (logAgentConfig.getLogFileConfigs() == null || logAgentConfig.getLogFileConfigs().size() == 0) {
 
     }
 
-    return logPusherConfig;
+    if (logAgentConfig.delayBetweenCycles <= 0) {
+
+    }
+
+    return logAgentConfig;
   }
 
 }

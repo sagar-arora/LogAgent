@@ -4,15 +4,15 @@ import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.arorasagar.logagent.endpoint.S3Endpoint;
+import com.arorasagar.logagent.storage.H2DaoImpl;
+import com.arorasagar.logagent.storage.LogfileDatabase;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 
-/**
- * Hello world!
- *
- */
+
 public class LogAgentRunner
 {
     private static File getConfigFile() {
@@ -23,9 +23,9 @@ public class LogAgentRunner
         if (configFile != null && configFile.exists()) {
             try {
                 System.out.println("Parsing the configuration file...");
-                LogPusherConfig logPusherConfig = LogPusherConfig.fromJsonFile(getConfigFile());
+                LogAgentConfig logAgentConfig = LogAgentConfig.fromJsonFile(getConfigFile());
             } catch (FileNotFoundException  e) {
-
+                throw new RuntimeException(e);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -37,9 +37,12 @@ public class LogAgentRunner
             .withRegion(Regions.US_EAST_1)
             .build();
 
-        LogPusherConfig logPusherConfig = LogPusherConfig.fromJsonFile(getConfigFile());
+        LogAgentConfig logAgentConfig = LogAgentConfig.fromJsonFile(getConfigFile());
+
+        LogfileDatabase h2Dao = new H2DaoImpl();
+
         LogAgentManager
-            logAgentManager = new LogAgentManager(logPusherConfig, new S3Endpoint(amazonS3));
+            logAgentManager = new LogAgentManager(logAgentConfig, new S3Endpoint(amazonS3), h2Dao);
 
         logAgentManager.serviceInit();
         logAgentManager.start();

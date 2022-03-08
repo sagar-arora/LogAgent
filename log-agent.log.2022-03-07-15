@@ -1,0 +1,219 @@
+2022-03-07 15:33:38,112 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:33:38,118 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:33:38,118 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:33:38,134 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:33:38,212 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:33:38,212 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:33:38,338 DEBUG main LocalXmlResourceResolver : Interpreting public/system identifier : [-//Hibernate/Hibernate Configuration DTD 3.0//EN] - [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd]
+2022-03-07 15:33:38,338 DEBUG main LocalXmlResourceResolver : Recognized hibernate-configuration identifier; attempting to resolve on classpath under org/hibernate/
+2022-03-07 15:33:38,338 DEBUG main JaxbCfgProcessor : cfg.xml document did not define namespaces; wrapping in custom event reader to introduce namespace information
+2022-03-07 15:34:15,411 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:34:15,411 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:34:15,427 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:34:15,427 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:34:15,521 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:34:15,521 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:34:15,694 DEBUG main LocalXmlResourceResolver : Interpreting public/system identifier : [-//Hibernate/Hibernate Configuration DTD 3.0//EN] - [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd]
+2022-03-07 15:34:15,694 DEBUG main LocalXmlResourceResolver : Recognized hibernate-configuration identifier; attempting to resolve on classpath under org/hibernate/
+2022-03-07 15:34:15,709 DEBUG main JaxbCfgProcessor : cfg.xml document did not define namespaces; wrapping in custom event reader to introduce namespace information
+2022-03-07 15:35:07,952 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:35:07,967 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:35:07,967 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:35:07,967 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:35:08,062 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:35:08,062 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:35:08,234 DEBUG main LocalXmlResourceResolver : Interpreting public/system identifier : [-//Hibernate/Hibernate Configuration DTD 3.0//EN] - [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd]
+2022-03-07 15:35:08,234 DEBUG main LocalXmlResourceResolver : Recognized hibernate-configuration identifier; attempting to resolve on classpath under org/hibernate/
+2022-03-07 15:35:08,250 DEBUG main JaxbCfgProcessor : cfg.xml document did not define namespaces; wrapping in custom event reader to introduce namespace information
+2022-03-07 15:36:28,225 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:36:28,240 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:36:28,240 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:36:28,240 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:36:28,334 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:36:28,334 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:36:28,507 DEBUG main LocalXmlResourceResolver : Interpreting public/system identifier : [-//Hibernate/Hibernate Configuration DTD 3.0//EN] - [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd]
+2022-03-07 15:36:28,507 DEBUG main LocalXmlResourceResolver : Recognized hibernate-configuration identifier; attempting to resolve on classpath under org/hibernate/
+2022-03-07 15:36:28,507 DEBUG main JaxbCfgProcessor : cfg.xml document did not define namespaces; wrapping in custom event reader to introduce namespace information
+2022-03-07 15:40:11,711 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:40:11,727 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:40:11,727 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:40:11,743 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:40:11,837 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:40:11,837 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:40:12,010 DEBUG main LocalXmlResourceResolver : Interpreting public/system identifier : [-//Hibernate/Hibernate Configuration DTD 3.0//EN] - [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd]
+2022-03-07 15:40:12,010 DEBUG main LocalXmlResourceResolver : Recognized hibernate-configuration identifier; attempting to resolve on classpath under org/hibernate/
+2022-03-07 15:40:12,010 DEBUG main JaxbCfgProcessor : cfg.xml document did not define namespaces; wrapping in custom event reader to introduce namespace information
+2022-03-07 15:41:08,851 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:41:08,867 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:41:08,867 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:41:08,867 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:48:07,618 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:48:07,634 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:48:07,634 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:48:07,634 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:51:43,723 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:51:43,739 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:51:43,739 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:51:43,755 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:51:43,818 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:51:43,818 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:52:38,207 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:52:38,223 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:52:38,223 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:52:38,238 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:52:38,286 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:52:38,301 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:54:40,590 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:54:40,653 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:54:40,653 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:54:40,669 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:54:40,889 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:54:40,889 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:56:48,797 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:56:48,819 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:56:48,819 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:56:48,830 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:56:48,909 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:56:48,909 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:58:23,616 DEBUG main logging : Logging Provider: org.jboss.logging.Log4jLoggerProvider
+2022-03-07 15:58:23,632 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
+2022-03-07 15:58:23,632 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.secure.spi.JaccIntegrator].
+2022-03-07 15:58:23,647 DEBUG main IntegratorServiceImpl : Adding Integrator [org.hibernate.cache.internal.CollectionCacheInvalidator].
+2022-03-07 15:58:23,710 INFO main Version : HHH000412: Hibernate Core {5.3.7.Final}
+2022-03-07 15:58:23,710 INFO main Environment : HHH000206: hibernate.properties not found
+2022-03-07 15:58:23,890 DEBUG main LocalXmlResourceResolver : Interpreting public/system identifier : [-//Hibernate/Hibernate Configuration DTD 3.0//EN] - [http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd]
+2022-03-07 15:58:23,890 DEBUG main LocalXmlResourceResolver : Recognized hibernate-configuration identifier; attempting to resolve on classpath under org/hibernate/
+2022-03-07 15:58:23,899 DEBUG main JaxbCfgProcessor : cfg.xml document did not define namespaces; wrapping in custom event reader to introduce namespace information
+2022-03-07 15:58:24,190 DEBUG main ServiceBinding : Overriding existing service binding [org.hibernate.secure.spi.JaccService]
+2022-03-07 15:58:24,213 DEBUG main RegionFactoryInitiator : Cannot default RegionFactory based on registered strategies as `[]` RegionFactory strategies were registered
+2022-03-07 15:58:24,213 DEBUG main RegionFactoryInitiator : Cache region factory : org.hibernate.cache.internal.NoCachingRegionFactory
+2022-03-07 15:58:24,229 INFO main Version : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration boolean -> org.hibernate.type.BooleanType@20a14b55
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration boolean -> org.hibernate.type.BooleanType@20a14b55
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Boolean -> org.hibernate.type.BooleanType@20a14b55
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration numeric_boolean -> org.hibernate.type.NumericBooleanType@77a98a6a
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration true_false -> org.hibernate.type.TrueFalseType@45e37a7e
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration yes_no -> org.hibernate.type.YesNoType@5bc9ba1d
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration byte -> org.hibernate.type.ByteType@6f0b0a5e
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration byte -> org.hibernate.type.ByteType@6f0b0a5e
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Byte -> org.hibernate.type.ByteType@6f0b0a5e
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration character -> org.hibernate.type.CharacterType@2974f221
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration char -> org.hibernate.type.CharacterType@2974f221
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Character -> org.hibernate.type.CharacterType@2974f221
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration short -> org.hibernate.type.ShortType@36f48b4
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration short -> org.hibernate.type.ShortType@36f48b4
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Short -> org.hibernate.type.ShortType@36f48b4
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration integer -> org.hibernate.type.IntegerType@4b20ca2b
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration int -> org.hibernate.type.IntegerType@4b20ca2b
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Integer -> org.hibernate.type.IntegerType@4b20ca2b
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration long -> org.hibernate.type.LongType@72758afa
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration long -> org.hibernate.type.LongType@72758afa
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Long -> org.hibernate.type.LongType@72758afa
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration float -> org.hibernate.type.FloatType@29df4d43
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration float -> org.hibernate.type.FloatType@29df4d43
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Float -> org.hibernate.type.FloatType@29df4d43
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration double -> org.hibernate.type.DoubleType@4a891c97
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration double -> org.hibernate.type.DoubleType@4a891c97
+2022-03-07 15:58:24,308 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Double -> org.hibernate.type.DoubleType@4a891c97
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration big_decimal -> org.hibernate.type.BigDecimalType@16746061
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.math.BigDecimal -> org.hibernate.type.BigDecimalType@16746061
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration big_integer -> org.hibernate.type.BigIntegerType@26425897
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.math.BigInteger -> org.hibernate.type.BigIntegerType@26425897
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration string -> org.hibernate.type.StringType@1698fc68
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.lang.String -> org.hibernate.type.StringType@1698fc68
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration nstring -> org.hibernate.type.StringNVarcharType@34997338
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration ncharacter -> org.hibernate.type.CharacterNCharType@2cae1042
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration url -> org.hibernate.type.UrlType@4febb875
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.net.URL -> org.hibernate.type.UrlType@4febb875
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration Duration -> org.hibernate.type.DurationType@42e3ede4
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.time.Duration -> org.hibernate.type.DurationType@42e3ede4
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration Instant -> org.hibernate.type.InstantType@a776e
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.time.Instant -> org.hibernate.type.InstantType@a776e
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration LocalDateTime -> org.hibernate.type.LocalDateTimeType@505a9d7c
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.time.LocalDateTime -> org.hibernate.type.LocalDateTimeType@505a9d7c
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration LocalDate -> org.hibernate.type.LocalDateType@24b6b8f6
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.time.LocalDate -> org.hibernate.type.LocalDateType@24b6b8f6
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration LocalTime -> org.hibernate.type.LocalTimeType@14b030a0
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.time.LocalTime -> org.hibernate.type.LocalTimeType@14b030a0
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@75e91545
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.time.OffsetDateTime -> org.hibernate.type.OffsetDateTimeType@75e91545
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration OffsetTime -> org.hibernate.type.OffsetTimeType@4b672daa
+2022-03-07 15:58:24,323 DEBUG main BasicTypeRegistry : Adding type registration java.time.OffsetTime -> org.hibernate.type.OffsetTimeType@4b672daa
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@1c7fd41f
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.time.ZonedDateTime -> org.hibernate.type.ZonedDateTimeType@1c7fd41f
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration date -> org.hibernate.type.DateType@6f8f9349
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.sql.Date -> org.hibernate.type.DateType@6f8f9349
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration time -> org.hibernate.type.TimeType@12bcd0c0
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.sql.Time -> org.hibernate.type.TimeType@12bcd0c0
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration timestamp -> org.hibernate.type.TimestampType@58ebfd03
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.sql.Timestamp -> org.hibernate.type.TimestampType@58ebfd03
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.util.Date -> org.hibernate.type.TimestampType@58ebfd03
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration dbtimestamp -> org.hibernate.type.DbTimestampType@dcfda20
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration calendar -> org.hibernate.type.CalendarType@4cc6fa2a
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.util.Calendar -> org.hibernate.type.CalendarType@4cc6fa2a
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.util.GregorianCalendar -> org.hibernate.type.CalendarType@4cc6fa2a
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration calendar_date -> org.hibernate.type.CalendarDateType@590c73d3
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration locale -> org.hibernate.type.LocaleType@79da1ec0
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.util.Locale -> org.hibernate.type.LocaleType@79da1ec0
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration currency -> org.hibernate.type.CurrencyType@66ce957f
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.util.Currency -> org.hibernate.type.CurrencyType@66ce957f
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration timezone -> org.hibernate.type.TimeZoneType@3b220bcb
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.util.TimeZone -> org.hibernate.type.TimeZoneType@3b220bcb
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration class -> org.hibernate.type.ClassType@13e3c1c7
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Class -> org.hibernate.type.ClassType@13e3c1c7
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration uuid-binary -> org.hibernate.type.UUIDBinaryType@1d8062d2
+2022-03-07 15:58:24,339 DEBUG main BasicTypeRegistry : Adding type registration java.util.UUID -> org.hibernate.type.UUIDBinaryType@1d8062d2
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration uuid-char -> org.hibernate.type.UUIDCharType@285c08c8
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration binary -> org.hibernate.type.BinaryType@1dd0e7c4
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration byte[] -> org.hibernate.type.BinaryType@1dd0e7c4
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration [B -> org.hibernate.type.BinaryType@1dd0e7c4
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration wrapper-binary -> org.hibernate.type.WrapperBinaryType@37bd68c3
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration Byte[] -> org.hibernate.type.WrapperBinaryType@37bd68c3
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration [Ljava.lang.Byte; -> org.hibernate.type.WrapperBinaryType@37bd68c3
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration row_version -> org.hibernate.type.RowVersionType@4bff1903
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration image -> org.hibernate.type.ImageType@56c9bbd8
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration characters -> org.hibernate.type.CharArrayType@619bfe29
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration char[] -> org.hibernate.type.CharArrayType@619bfe29
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration [C -> org.hibernate.type.CharArrayType@619bfe29
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration wrapper-characters -> org.hibernate.type.CharacterArrayType@30f5a68a
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration [Ljava.lang.Character; -> org.hibernate.type.CharacterArrayType@30f5a68a
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration Character[] -> org.hibernate.type.CharacterArrayType@30f5a68a
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration text -> org.hibernate.type.TextType@53f48368
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration ntext -> org.hibernate.type.NTextType@73db4768
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration blob -> org.hibernate.type.BlobType@546ccad7
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration java.sql.Blob -> org.hibernate.type.BlobType@546ccad7
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration materialized_blob -> org.hibernate.type.MaterializedBlobType@485a3466
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration clob -> org.hibernate.type.ClobType@76f7d241
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration java.sql.Clob -> org.hibernate.type.ClobType@76f7d241
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration nclob -> org.hibernate.type.NClobType@44828f6b
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration java.sql.NClob -> org.hibernate.type.NClobType@44828f6b
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration materialized_clob -> org.hibernate.type.MaterializedClobType@3e34ace1
+2022-03-07 15:58:24,354 DEBUG main BasicTypeRegistry : Adding type registration materialized_nclob -> org.hibernate.type.MaterializedNClobType@56ace400
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration serializable -> org.hibernate.type.SerializableType@5ed731d0
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration object -> org.hibernate.type.ObjectType@6b5894c8
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration java.lang.Object -> org.hibernate.type.ObjectType@6b5894c8
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration imm_date -> org.hibernate.type.AdaptedImmutableType@5778826f
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration imm_time -> org.hibernate.type.AdaptedImmutableType@5b64c4b7
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration imm_timestamp -> org.hibernate.type.AdaptedImmutableType@4763c727
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration imm_dbtimestamp -> org.hibernate.type.AdaptedImmutableType@72445aba
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration imm_calendar -> org.hibernate.type.AdaptedImmutableType@61bcd567
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration imm_calendar_date -> org.hibernate.type.AdaptedImmutableType@1c80e49b
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration imm_binary -> org.hibernate.type.AdaptedImmutableType@458342d3
+2022-03-07 15:58:24,370 DEBUG main BasicTypeRegistry : Adding type registration imm_serializable -> org.hibernate.type.AdaptedImmutableType@15c25153
+2022-03-07 15:58:24,391 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [uuid2] -> [org.hibernate.id.UUIDGenerator]
+2022-03-07 15:58:24,391 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [guid] -> [org.hibernate.id.GUIDGenerator]
+2022-03-07 15:58:24,391 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [uuid] -> [org.hibernate.id.UUIDHexGenerator]
+2022-03-07 15:58:24,391 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [uuid.hex] -> [org.hibernate.id.UUIDHexGenerator]
+2022-03-07 15:58:24,391 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [assigned] -> [org.hibernate.id.Assigned]
+2022-03-07 15:58:24,391 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [identity] -> [org.hibernate.id.IdentityGenerator]
+2022-03-07 15:58:24,402 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [select] -> [org.hibernate.id.SelectGenerator]
+2022-03-07 15:58:24,402 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [sequence] -> [org.hibernate.id.enhanced.SequenceStyleGenerator]
+2022-03-07 15:58:24,402 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [seqhilo] -> [org.hibernate.id.SequenceHiLoGenerator]
+2022-03-07 15:58:24,402 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [increment] -> [org.hibernate.id.IncrementGenerator]
+2022-03-07 15:58:24,402 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [foreign] -> [org.hibernate.id.ForeignGenerator]
+2022-03-07 15:58:24,402 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [sequence-identity] -> [org.hibernate.id.SequenceIdentityGenerator]
+2022-03-07 15:58:24,402 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [enhanced-sequence] -> [org.hibernate.id.enhanced.SequenceStyleGenerator]
+2022-03-07 15:58:24,402 DEBUG main DefaultIdentifierGeneratorFactory : Registering IdentifierGenerator strategy [enhanced-table] -> [org.hibernate.id.enhanced.TableGenerator]
+2022-03-07 15:58:24,402 WARN main pooling : HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2022-03-07 15:58:24,417 INFO main AbstractServiceRegistryImpl : HHH000369: Error stopping service [class org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl] : java.lang.NullPointerException: Cannot invoke "org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.getUrl()" because "this.pool" is null
+2022-03-07 15:58:24,417 DEBUG main BootstrapServiceRegistryImpl : Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries

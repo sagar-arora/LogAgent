@@ -14,25 +14,25 @@ public class LogUploader implements Callable<LogUploadResult> {
   private Endpoint endpoint;
   private File inputFile;
   private LogFile logFile;
-  private com.arorasagar.logagent.LogPusherConfig.Path path;
+  private LogAgentConfig.Path path;
   private final Logger logger = LoggerFactory.getLogger(LogUploader.class);
 
   public LogUploader(File inputFile, LogFile logFile, Endpoint endpoint) {
     this.endpoint = endpoint;
     this.inputFile = inputFile;
     this.logFile = logFile;
-    this.path = logFile.getPath();
+    //this.path = logFile.getPath();
   }
 
   @Override
-  public com.arorasagar.logagent.LogUploadResult call() {
+  public LogUploadResult call() {
     String md5HashOfFile;
     LogUploadResult result = new LogUploadResult();
     try {
       md5HashOfFile = FileUtils.calculateMd5ofFile(inputFile);
       if (md5HashOfFile.equals(logFile.getLastUploadedMD5Hash())) {
         logger.info("No Ops since the last hash equals to the current one.");
-        return new com.arorasagar.logagent.LogUploadResult();
+        return result;
       }
       logger.info("Starting the upload of the file: {}", inputFile.getAbsolutePath());
       endpoint.uploadData(inputFile, this.path.getObject() + "/" + inputFile.getName(), this.path
