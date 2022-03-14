@@ -3,7 +3,7 @@ package com.arorasagar.logagent;
 import com.arorasagar.logagent.LogAgentConfig.LogFileConfig;
 import com.arorasagar.logagent.endpoint.Endpoint;
 import com.arorasagar.logagent.model.LogFile;
-import com.arorasagar.logagent.storage.LogfileDatabase;
+import com.arorasagar.logagent.storage.LogFileDao;
 import com.arorasagar.logagent.utils.FileUtils;
 import com.arorasagar.logagent.utils.LogUtils;
 import com.google.common.annotations.VisibleForTesting;
@@ -31,18 +31,18 @@ public class LogAgentManager extends Thread {
   private final ScheduledExecutorService logPusherSchedulerService;
   private LogAgentConfig logAgentConfig;
   private Endpoint endpoint;
-  private LogfileDatabase logfileDatabase;
+  private LogFileDao logFileDao;
 
   public LogAgentManager(LogAgentConfig logAgentConfig,
                          Endpoint endpoint,
-                         LogfileDatabase logfileDatabase) {
+                         LogFileDao logFileDao) {
     logAgentRunning = new AtomicBoolean(true);
     logPusherExecutorService = Executors.newFixedThreadPool(2);
     logPusherSchedulerService = Executors.newScheduledThreadPool(1);
     this.logAgentConfig = logAgentConfig;
     this.endpoint = endpoint;
 
-    this.logfileDatabase = logfileDatabase;
+    this.logFileDao = logFileDao;
 
     Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
       @Override
@@ -136,12 +136,12 @@ public class LogAgentManager extends Thread {
   }
 
   @VisibleForTesting
-  public Map<File, LogFile> filterLogFiles(Map<File, LogFileConfig> logConfigMap)
+  public Map<File, LogFile> filterLogFiles(Map<File, LogFileConfig> matchingFiles)
       throws IOException {
 
     Map<File, LogFile> filesToUpload = new HashMap<>();
 
-    for (Map.Entry<File, LogFileConfig> entry : logConfigMap.entrySet()) {
+    for (Map.Entry<File, LogFileConfig> entry : matchingFiles.entrySet()) {
 
       File fileToUpload = entry.getKey();
       String fileToUploadPath = fileToUpload.getAbsolutePath();
@@ -151,29 +151,40 @@ public class LogAgentManager extends Thread {
       // the recovery map has already seen this file before then we just need to check if
       // the last modified time is greater than the last upload time for the file.
 
-      LogFile logFile = logfileDatabase.getLogfile(fileToUploadPath);
+      LogFile logFile = logFileDao.getLogfile(fileToUploadPath);
       boolean isPresentInDb = logFile != null;
       if (isPresentInDb && LogUtils.fileNeedsUpload(fileToUpload, logFile)) {
         File compressedFileToUpload = archiveFile(fileToUpload);
         filesToUpload.put(compressedFileToUpload, logFile);
       } else if (!isPresentInDb) {
+        // discovered for the first time.
         File compressedFileToUpload = archiveFile(fileToUpload);
 
         logFile = LogFile.builder()
                 .filePath(fileToUploadPath)
                 .lastUploadedMD5Hash(FileUtils.calculateMd5ofFile(compressedFileToUpload))
+                .archivedPath(compressedFileToUpload.getAbsolutePath())
                 .build();
-        logfileDatabase.writeLogfile(logFile);
+        logFileDao.writeLogfile(logFile);
 
         filesToUpload.put(compressedFileToUpload, logFile);
       }
-
 
       if (System.currentTimeMillis() - lastModifiedTime > Duration.standardSeconds(logAgentConfig.getRetentionPeriod()).getMillis()) {
         logger.info("Deleting the file {} as the file was last modified more than {} seconds ago.", filesToUpload,
             Duration.standardSeconds(logAgentConfig.getRetentionPeriod()));
        // recoveryMap.remove(fileToUpload);
         org.apache.commons.io.FileUtils.deleteQuietly(fileToUpload);
+
+        // check if the archived files exist in the temp folder.
+
+        if (logFileDao.getLogfile(fileToUploadPath) != null) {
+          String archivedFilePath = logFileDao.getLogfile(fileToUploadPath).getArchivedPath();
+          if (archivedFilePath != null && Files.exists(Paths.get(archivedFilePath))) {
+            File archivedFile = new File(archivedFilePath);
+            org.apache.commons.io.FileUtils.deleteQuietly(archivedFile);
+          }
+        }
       }
     }
 
@@ -185,7 +196,7 @@ public class LogAgentManager extends Thread {
     discoverFilesAndUpdateLogConfigMap(matchingFiles, logAgentConfig.getLogFileConfigs());
     logger.info("Discovered total {} files.", matchingFiles.size());
 
-    long startTime = System.currentTimeMillis();
+   // long startTime = System.currentTimeMillis();
 
     Map<File, LogFile> filesToUpload = new HashMap<>();
     Map<String, LogFile> recoveryMap = new HashMap<>();

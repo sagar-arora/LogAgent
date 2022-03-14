@@ -17,5 +17,7 @@ public class LogFile {
   private String filePath;
   private Long lastUploadedTs;
   private String lastUploadedMD5Hash;
+  private String archivedPath;
+
   //private LogAgentConfig.Path path;
 }

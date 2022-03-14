@@ -2,7 +2,7 @@ package com.arorasagar.logagent.storage;
 
 import com.arorasagar.logagent.model.LogFile;
 
-public class JsonDaoImpl implements LogfileDatabase {
+public class JsonDaoImpl implements LogFileDao {
 
     @Override
     public void writeLogfile(LogFile logFile) {

@@ -7,13 +7,9 @@ import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.LogManager;
 
-public class H2DaoImpl implements LogfileDatabase {
+public class H2DaoImpl implements LogFileDao {
 
 /*    Connection connection;
 

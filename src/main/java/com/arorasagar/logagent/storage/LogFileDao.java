@@ -2,7 +2,7 @@ package com.arorasagar.logagent.storage;
 
 import com.arorasagar.logagent.model.LogFile;
 
-public interface LogfileDatabase {
+public interface LogFileDao {
 
     void writeLogfile(LogFile logFile);
 

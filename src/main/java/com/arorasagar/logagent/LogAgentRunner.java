@@ -5,12 +5,11 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 import com.arorasagar.logagent.endpoint.S3Endpoint;
 import com.arorasagar.logagent.storage.H2DaoImpl;
-import com.arorasagar.logagent.storage.LogfileDatabase;
+import com.arorasagar.logagent.storage.LogFileDao;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLException;
 
 
 public class LogAgentRunner
@@ -39,7 +38,7 @@ public class LogAgentRunner
 
         LogAgentConfig logAgentConfig = LogAgentConfig.fromJsonFile(getConfigFile());
 
-        LogfileDatabase h2Dao = new H2DaoImpl();
+        LogFileDao h2Dao = new H2DaoImpl();
 
         LogAgentManager
             logAgentManager = new LogAgentManager(logAgentConfig, new S3Endpoint(amazonS3), h2Dao);
