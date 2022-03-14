@@ -20,8 +20,13 @@ public final class FileUtils {
   private static final Logger logger = LoggerFactory.getLogger(FileUtils.class);
   private FileUtils() {}
 
-  public static byte[] calculateMd5ofFileBytes(File file) throws IOException, NoSuchAlgorithmException {
-    MessageDigest digest = MessageDigest.getInstance("MD5");
+  public static byte[] calculateMd5ofFileBytes(File file) throws IOException {
+    MessageDigest digest = null;
+    try {
+      digest = MessageDigest.getInstance("MD5");
+    } catch (NoSuchAlgorithmException e) {
+      // should never reach here as java has instance of MD5.
+    }
     try (FileInputStream fis = new FileInputStream(file)) {
 
       // Create byte array to read data in chunks
@@ -46,12 +51,15 @@ public final class FileUtils {
   }
 
   public static String calculateMd5ofFile(File file)
-      throws IOException, NoSuchAlgorithmException {
+      throws IOException {
+
     byte[] md5 = calculateMd5ofFileBytes(file);
     StringBuilder result = new StringBuilder();
+
     for (byte b : md5) {
       result.append(Integer.toString((b & 0xff) + 0x100, 16).substring(1));
     }
+
     return result.toString();
   }
 

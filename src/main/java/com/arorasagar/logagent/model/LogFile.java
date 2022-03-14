@@ -1,6 +1,5 @@
 package com.arorasagar.logagent.model;
 
-import com.arorasagar.logagent.LogAgentConfig;
 import lombok.*;
 
 import javax.persistence.Entity;

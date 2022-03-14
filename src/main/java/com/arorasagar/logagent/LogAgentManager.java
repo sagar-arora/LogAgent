@@ -83,11 +83,11 @@ public class LogAgentManager extends Thread {
       boolean logPusherSchedulerTerminated = logPusherSchedulerService.awaitTermination(1000, TimeUnit.MILLISECONDS);
 
       if (!logPusherExecutorTerminated) {
-        logger.error("logPusherExecutorService shutdown timed out.");
+        logger.error("logAgentExecutorService shutdown timed out.");
       }
 
       if (!logPusherSchedulerTerminated) {
-        logger.error("logPusherSchedulerTerminated shutdown timed out.");
+        logger.error("logAgentSchedulerTerminated shutdown timed out.");
       }
 
     } catch (InterruptedException e) {
@@ -95,7 +95,7 @@ public class LogAgentManager extends Thread {
     }
   }
 
-  void updateLogConfigMap(Map<File, LogFileConfig> logConfigMap, List<LogFileConfig> logFileConfigs) {
+  void discoverFilesAndUpdateLogConfigMap(Map<File, LogFileConfig> matchingFiles, List<LogFileConfig> logFileConfigs) {
     for (LogFileConfig logFileConfig : logFileConfigs) {
       List<File> discoveredFiles = FileUtils.discoverFiles(logFileConfig);
 
@@ -105,14 +105,12 @@ public class LogAgentManager extends Thread {
           continue;
         }
 
-        LogFileConfig associatedLogFileConfig = logConfigMap.get(file);
+        LogFileConfig associatedLogFileConfig = matchingFiles.get(file);
         if (associatedLogFileConfig == null) {
-          // first time discovery of a file map to this configuration itself
+          // first time discovery of a file, map to this configuration itself
           associatedLogFileConfig = logFileConfig;
-          logConfigMap.put(file, associatedLogFileConfig);
+          matchingFiles.put(file, associatedLogFileConfig);
         }
-
-        //logConfigMap.putIfAbsent(file, logConfig);
       }
     }
   }
@@ -138,9 +136,7 @@ public class LogAgentManager extends Thread {
   }
 
   @VisibleForTesting
-  public Map<File, LogFile> filterLogFiles(Map<File, LogFileConfig> logConfigMap,
-                                           long startTime,
-                                           Map<String, LogFile> recoveryMap)
+  public Map<File, LogFile> filterLogFiles(Map<File, LogFileConfig> logConfigMap)
       throws IOException {
 
     Map<File, LogFile> filesToUpload = new HashMap<>();
@@ -149,46 +145,31 @@ public class LogAgentManager extends Thread {
 
       File fileToUpload = entry.getKey();
       String fileToUploadPath = fileToUpload.getAbsolutePath();
-      LogFileConfig logFileConfig = entry.getValue();
       long lastModifiedTime = fileToUpload.lastModified();
 
       // first case if the file is discovered by the given pattern in a directory and
       // the recovery map has already seen this file before then we just need to check if
       // the last modified time is greater than the last upload time for the file.
- /*     if (recoveryMap.containsKey(fileToUploadPath) && LogUtils
-          .fileNeedsUpload(fileToUpload, recoveryMap.get(fileToUploadPath))) {
+
+      LogFile logFile = logfileDatabase.getLogfile(fileToUploadPath);
+      boolean isPresentInDb = logFile != null;
+      if (isPresentInDb && LogUtils.fileNeedsUpload(fileToUpload, logFile)) {
         File compressedFileToUpload = archiveFile(fileToUpload);
-        LogFile logFile = recoveryMap.get(fileToUploadPath);
         filesToUpload.put(compressedFileToUpload, logFile);
-      } else if (!recoveryMap.containsKey(fileToUploadPath)) {
+      } else if (!isPresentInDb) {
         File compressedFileToUpload = archiveFile(fileToUpload);
 
-        LogFile logFile = LogFile.builder()
-            .filePath(fileToUploadPath)
-            .path(logFileConfig.getPath())
-            .build();
-        recoveryMap.put(fileToUploadPath, logFile);
-        filesToUpload.put(compressedFileToUpload, logFile);
-      }*/
-
-      if (logfileDatabase.isPresent(fileToUploadPath) &&
-              LogUtils.fileNeedsUpload(fileToUpload, logfileDatabase.getLogfile(fileToUploadPath))) {
-        File compressedFileToUpload = archiveFile(fileToUpload);
-        LogFile logFile = logfileDatabase.getLogfile(fileToUploadPath);
-        filesToUpload.put(compressedFileToUpload, logFile);
-      } else if (!logfileDatabase.isPresent(fileToUploadPath)) {
-        File compressedFileToUpload = archiveFile(fileToUpload);
-
-        LogFile logFile = LogFile.builder()
+        logFile = LogFile.builder()
                 .filePath(fileToUploadPath)
-                //.path(logFileConfig.getPath())
+                .lastUploadedMD5Hash(FileUtils.calculateMd5ofFile(compressedFileToUpload))
                 .build();
         logfileDatabase.writeLogfile(logFile);
+
         filesToUpload.put(compressedFileToUpload, logFile);
       }
 
 
-      if (startTime - lastModifiedTime > Duration.standardSeconds(logAgentConfig.getRetentionPeriod()).getMillis()) {
+      if (System.currentTimeMillis() - lastModifiedTime > Duration.standardSeconds(logAgentConfig.getRetentionPeriod()).getMillis()) {
         logger.info("Deleting the file {} as the file was last modified more than {} seconds ago.", filesToUpload,
             Duration.standardSeconds(logAgentConfig.getRetentionPeriod()));
        // recoveryMap.remove(fileToUpload);
@@ -200,18 +181,18 @@ public class LogAgentManager extends Thread {
   }
 
   private void processLogConfigs() {
-    Map<File, LogFileConfig> logConfigMap = new HashMap<>();
-    updateLogConfigMap(logConfigMap, logAgentConfig.getLogFileConfigs());
-    logger.info("Discovered total {} files.", logConfigMap.size());
+    Map<File, LogFileConfig> matchingFiles = new HashMap<>();
+    discoverFilesAndUpdateLogConfigMap(matchingFiles, logAgentConfig.getLogFileConfigs());
+    logger.info("Discovered total {} files.", matchingFiles.size());
 
-    long iterationStartTime = System.currentTimeMillis();
+    long startTime = System.currentTimeMillis();
 
     Map<File, LogFile> filesToUpload = new HashMap<>();
     Map<String, LogFile> recoveryMap = new HashMap<>();
 
     try {
-        recoveryMap = LogUtils.readLogConfigMapFromDisk(new File(this.logAgentConfig.getRecoveryPath()));
-       filesToUpload = filterLogFiles(logConfigMap, iterationStartTime, recoveryMap);
+      //  recoveryMap = LogUtils.readLogConfigMapFromDisk(new File(this.logAgentConfig.getRecoveryPath()));
+       filesToUpload = filterLogFiles(matchingFiles);
     } catch (Exception e) {
       logger.info("Exception occurred while filtering the files {}", e.getMessage());
     }
@@ -223,7 +204,6 @@ public class LogAgentManager extends Thread {
       for (Map.Entry<File, LogFile> entry : filesToUpload.entrySet()) {
         File fileToUpload = entry.getKey();
         LogFile logFile = entry.getValue();
-        logger.info("here....");
         Future<LogUploadResult> logUploadResultFuture =
             logPusherExecutorService.submit(new LogUploader(fileToUpload, logFile, endpoint));
         futureResults.add(logUploadResultFuture);
@@ -234,7 +214,7 @@ public class LogAgentManager extends Thread {
       }
 
     } catch (Exception e) {
-      logger.info("Exception occurred while uploading the files {}", e.getMessage());
+      logger.info("Exception occurred while uploading the files {}", e);
     }
 
     try {
