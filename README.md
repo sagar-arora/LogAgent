@@ -3,10 +3,10 @@
 LogAgent is demaon program implemented in Java to upload running log files of programs (defined by regex) to upload on fixed interval to cloud storage (supported File storage - AWS, GCP, Azure).
 Note : It is still currently in early stages of implementation and looking for developers.
 
-Usage with Settings File
+Usage with Config File
 -----
 
-For a very simple client setup with a settings file you first need a JSON file such as:
+For a very simple setup with a configs file you first need a JSON file such as:
 
 ```
 {
