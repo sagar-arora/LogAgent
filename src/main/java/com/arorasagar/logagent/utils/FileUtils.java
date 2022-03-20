@@ -20,6 +20,26 @@ public final class FileUtils {
   private static final Logger logger = LoggerFactory.getLogger(FileUtils.class);
   private FileUtils() {}
 
+
+  public static File archiveFile(String tmpDir, File fileToUpload) throws IOException {
+
+    Path tmpDirectory = Paths.get(tmpDir);
+    if (!Files.exists(tmpDirectory) && Files.isReadable(tmpDirectory)) {
+      Files.createFile(tmpDirectory);
+    }
+    Path compressedFileToUploadPath = FileUtils.getCompressedFilePathToUpload(new File(tmpDir), fileToUpload);
+    if (!Files.exists(compressedFileToUploadPath)) {
+      Path parent = compressedFileToUploadPath.getParent();
+      if (!Files.exists(parent)) {
+        Files.createDirectories(parent);
+      }
+      Files.createFile(compressedFileToUploadPath);
+    }
+    logger.info("Path found : {}", compressedFileToUploadPath.toString());
+    FileUtils.compressGzip(fileToUpload.toPath(), compressedFileToUploadPath);
+    return compressedFileToUploadPath.toFile();
+  }
+
   public static byte[] calculateMd5ofFileBytes(File file) throws IOException {
     MessageDigest digest = null;
     try {
