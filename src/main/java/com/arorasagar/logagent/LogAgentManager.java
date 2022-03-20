@@ -116,25 +116,6 @@ public class LogAgentManager extends Thread {
   }
 
 
-  public File archiveFile(File fileToUpload) throws IOException {
-
-    Path tmpDirectory = Paths.get(logAgentConfig.getTmpDir());
-    if (!Files.exists(tmpDirectory) && Files.isReadable(tmpDirectory)) {
-      Files.createFile(tmpDirectory);
-    }
-    Path compressedFileToUploadPath = FileUtils.getCompressedFilePathToUpload(new File(logAgentConfig.getTmpDir()), fileToUpload);
-    if (!Files.exists(compressedFileToUploadPath)) {
-      Path parent = compressedFileToUploadPath.getParent();
-      if (!Files.exists(parent)) {
-        Files.createDirectories(parent);
-      }
-      Files.createFile(compressedFileToUploadPath);
-    }
-    logger.info("Path found : {}", compressedFileToUploadPath.toString());
-    FileUtils.compressGzip(fileToUpload.toPath(), compressedFileToUploadPath);
-    return compressedFileToUploadPath.toFile();
-  }
-
   @VisibleForTesting
   public Map<File, LogFile> filterLogFiles(Map<File, LogFileConfig> matchingFiles)
       throws IOException {
@@ -154,11 +135,11 @@ public class LogAgentManager extends Thread {
       LogFile logFile = logFileDao.getLogfile(fileToUploadPath);
       boolean isPresentInDb = logFile != null;
       if (isPresentInDb && LogUtils.fileNeedsUpload(fileToUpload, logFile)) {
-        File compressedFileToUpload = archiveFile(fileToUpload);
+        File compressedFileToUpload = FileUtils.archiveFile(logAgentConfig.getTmpDir(), fileToUpload);
         filesToUpload.put(compressedFileToUpload, logFile);
       } else if (!isPresentInDb) {
         // discovered for the first time.
-        File compressedFileToUpload = archiveFile(fileToUpload);
+        File compressedFileToUpload = FileUtils.archiveFile(logAgentConfig.getTmpDir(), fileToUpload);
 
         logFile = LogFile.builder()
                 .filePath(fileToUploadPath)
@@ -177,7 +158,6 @@ public class LogAgentManager extends Thread {
         org.apache.commons.io.FileUtils.deleteQuietly(fileToUpload);
 
         // check if the archived files exist in the temp folder.
-
         if (logFileDao.getLogfile(fileToUploadPath) != null) {
           String archivedFilePath = logFileDao.getLogfile(fileToUploadPath).getArchivedPath();
           if (archivedFilePath != null && Files.exists(Paths.get(archivedFilePath))) {
@@ -196,8 +176,6 @@ public class LogAgentManager extends Thread {
     discoverFilesAndUpdateLogConfigMap(matchingFiles, logAgentConfig.getLogFileConfigs());
     logger.info("Discovered total {} files.", matchingFiles.size());
 
-   // long startTime = System.currentTimeMillis();
-
     Map<File, LogFile> filesToUpload = new HashMap<>();
     Map<String, LogFile> recoveryMap = new HashMap<>();
 
@@ -213,6 +191,7 @@ public class LogAgentManager extends Thread {
 
     try {
       for (Map.Entry<File, LogFile> entry : filesToUpload.entrySet()) {
+
         File fileToUpload = entry.getKey();
         LogFile logFile = entry.getValue();
         Future<LogUploadResult> logUploadResultFuture =
@@ -225,7 +204,7 @@ public class LogAgentManager extends Thread {
       }
 
     } catch (Exception e) {
-      logger.info("Exception occurred while uploading the files {}", e);
+      logger.info("Exception occurred while uploading the files {}", e.getMessage());
     }
 
     try {
