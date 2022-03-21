@@ -1,6 +1,6 @@
 # LogAgent ![LogAgent](https://github.com/sagar-arora/LogAgent/actions/workflows/build.yml/badge.svg)
 
-LogAgent is demaon program implemented in Java to upload running log files of programs (defined by regex) to upload on fixed interval to cloud storage (supported File storage - AWS, GCP, Azure).
+LogAgent is demaon program implemented in Java to upload running log files of programs (defined by regex) on some fixed interval to cloud storage (supported File storage - AWS, GCP, Azure).
 Note : It is still currently in early stages of implementation and looking for developers.
 
 Usage with Config File
