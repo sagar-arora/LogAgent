@@ -84,8 +84,60 @@ public final class LogAgentConfig {
     }
   }
 
+  public static void validateEndpointType(String endpointType) {
+        if (endpointType == null || endpointType.isEmpty()) {
+            throw new IllegalArgumentException("endPointType is required");
+        }
+
+        // Check if it's a valid endpoint type
+        if (!isValidEndpointType(endpointType)) {
+            throw new IllegalArgumentException("Invalid endPointType: " + endpointType);
+        }
+
+        // Check specific paths
+        if (endpointType.equals("s3")) {
+            // Validate S3 path
+            if (!isValidS3Path(endpointType)) {
+                throw new IllegalArgumentException("Invalid S3 path");
+            }
+        } else if (endpointType.equals("gcs")) {
+            // Validate GCS path
+            if (!isValidGCSPath(endpointType)) {
+                throw new IllegalArgumentException("Invalid GCS path");
+            }
+        } else if (endpointType.equals("azure")) {
+            // Validate Azure Files path
+            if (!isValidAzureFilesPath(endpointType)) {
+                throw new IllegalArgumentException("Invalid Azure Files path");
+            }
+        }
+    }
+
+    public static boolean isValidEndpointType(String endpointType) {
+        return endpointType.equals("s3") || endpointType.equals("gcs") || endpointType.equals("azure");
+    }
+
+    public static boolean isValidS3Path(String path) {
+        // Add S3 path validation logic here
+        return true; // Replace with actual validation logic
+    }
+
+    public static boolean isValidGCSPath(String path) {
+        // Add GCS path validation logic here
+        return true; // Replace with actual validation logic
+    }
+
+    public static boolean isValidAzureFilesPath(String path) {
+        // Add Azure Files path validation logic here
+        return true; // Replace with actual validation logic
+    }
+}
+
 
   public static LogAgentConfig fromJsonFile(File jsonFile) throws IOException {
+    public void doSomething() {
+    doSomething(recoveryPath);
+    }
     ObjectMapper objectMapper = new ObjectMapper();
     LogAgentConfig
             logAgentConfig = objectMapper.readValue(jsonFile, LogAgentConfig.class);
@@ -94,9 +146,22 @@ public final class LogAgentConfig {
 
     }
 
-    if (logAgentConfig.delayBetweenCycles <= 0) {
+    try {
+            validateEndpointType(endpointType);
+            System.out.println("Endpoint type is valid: " + endpointType);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());    
 
+    if(retentionPeriod>0)
+    {
+      
     }
+
+
+    if(delayBetweenCycles>0){
+    if (logAgentConfig.delayBetweenCycles <=0) {
+
+    }}
 
     return logAgentConfig;
   }
