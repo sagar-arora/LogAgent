@@ -142,7 +142,8 @@ public final class LogAgentConfig {
     LogAgentConfig
             logAgentConfig = objectMapper.readValue(jsonFile, LogAgentConfig.class);
 
-    if (logAgentConfig.getLogFileConfigs() == null || logAgentConfig.getLogFileConfigs().size() == 0) {
+    if (logAgentConfig.getLogFileConfigs() == null || logAgentConfig.getLogFileConfigs().size() == 0)
+    {
 
     }
 
@@ -158,10 +159,12 @@ public final class LogAgentConfig {
     }
 
 
-    if(delayBetweenCycles>0){
+    if(delayBetweenCycles>0)
+    {
     if (logAgentConfig.delayBetweenCycles <=0) {
 
-    }}
+    }
+    }
 
     return logAgentConfig;
   }
