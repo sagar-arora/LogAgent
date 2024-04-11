@@ -1,14 +1,14 @@
 package com.arorasagar.logagent.storage;
 
 import com.arorasagar.logagent.model.LogFile;
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+@Slf4j
 public class H2DaoImpl implements LogFileDao {
 
 /*    Connection connection;
@@ -32,7 +32,6 @@ public class H2DaoImpl implements LogFileDao {
         connection.close();
     }*/
 
-    private final Logger logger = LoggerFactory.getLogger(H2DaoImpl.class);
     @Override
     public void writeLogfile(LogFile logFile) {
 
@@ -43,7 +42,7 @@ public class H2DaoImpl implements LogFileDao {
             session.save(logFile);
 
             transaction.commit();
-            logger.info("Transcation complete.");
+            log.info("Transaction complete.");
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();

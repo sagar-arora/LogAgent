@@ -7,14 +7,12 @@ import com.arorasagar.logagent.storage.LogFileDao;
 import com.arorasagar.logagent.utils.FileUtils;
 import com.arorasagar.logagent.utils.LogUtils;
 import com.google.common.annotations.VisibleForTesting;
+import lombok.extern.slf4j.Slf4j;
 import org.joda.time.Duration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,10 +21,10 @@ import java.util.Map;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+@Slf4j
 public class LogAgentManager extends Thread {
 
   private final AtomicBoolean logAgentRunning;
-  private final Logger logger = LoggerFactory.getLogger(LogAgentManager.class);
   private final ExecutorService logPusherExecutorService;
   private final ScheduledExecutorService logPusherSchedulerService;
   private LogAgentConfig logAgentConfig;
@@ -47,7 +45,7 @@ public class LogAgentManager extends Thread {
     Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
       @Override
       public void run() {
-        logger.debug("Service has been shutdown.");
+        log.debug("Service has been shutdown.");
       }
     }));
   }
@@ -61,7 +59,7 @@ public class LogAgentManager extends Thread {
   }
 
   public void run() {
-    logger.info("Starting log pusher service.");
+    log.info("Starting log pusher service.");
 
     while (logAgentRunning.get()) {
       try {
@@ -83,15 +81,15 @@ public class LogAgentManager extends Thread {
       boolean logPusherSchedulerTerminated = logPusherSchedulerService.awaitTermination(1000, TimeUnit.MILLISECONDS);
 
       if (!logPusherExecutorTerminated) {
-        logger.error("logAgentExecutorService shutdown timed out.");
+        log.error("logAgentExecutorService shutdown timed out.");
       }
 
       if (!logPusherSchedulerTerminated) {
-        logger.error("logAgentSchedulerTerminated shutdown timed out.");
+        log.error("logAgentSchedulerTerminated shutdown timed out.");
       }
 
     } catch (InterruptedException e) {
-      logger.error(e.getMessage());
+      log.error(e.getMessage());
     }
   }
 
@@ -101,7 +99,7 @@ public class LogAgentManager extends Thread {
 
       for (File file : discoveredFiles) {
         if (!file.canRead()) {
-          logger.warn("Skipping {}, since can't read", file.getAbsolutePath());
+          log.warn("Skipping {}, since can't read", file.getAbsolutePath());
           continue;
         }
 
@@ -152,7 +150,7 @@ public class LogAgentManager extends Thread {
       }
 
       if (System.currentTimeMillis() - lastModifiedTime > Duration.standardSeconds(logAgentConfig.getRetentionPeriod()).getMillis()) {
-        logger.info("Deleting the file {} as the file was last modified more than {} seconds ago.", filesToUpload,
+        log.info("Deleting the file {} as the file was last modified more than {} seconds ago.", filesToUpload,
             Duration.standardSeconds(logAgentConfig.getRetentionPeriod()));
        // recoveryMap.remove(fileToUpload);
         org.apache.commons.io.FileUtils.deleteQuietly(fileToUpload);
@@ -174,7 +172,7 @@ public class LogAgentManager extends Thread {
   private void processLogConfigs() {
     Map<File, LogFileConfig> matchingFiles = new HashMap<>();
     discoverFilesAndUpdateLogConfigMap(matchingFiles, logAgentConfig.getLogFileConfigs());
-    logger.info("Discovered total {} files.", matchingFiles.size());
+    log.info("Discovered total {} files.", matchingFiles.size());
 
     Map<File, LogFile> filesToUpload = new HashMap<>();
     Map<String, LogFile> recoveryMap = new HashMap<>();
@@ -183,9 +181,9 @@ public class LogAgentManager extends Thread {
       //  recoveryMap = LogUtils.readLogConfigMapFromDisk(new File(this.logAgentConfig.getRecoveryPath()));
        filesToUpload = filterLogFiles(matchingFiles);
     } catch (Exception e) {
-      logger.info("Exception occurred while filtering the files {}", e.getMessage());
+      log.info("Exception occurred while filtering the files {}", e.getMessage());
     }
-    logger.info("Found total {} files to upload after filtering.", filesToUpload.size());
+    log.info("Found total {} files to upload after filtering.", filesToUpload.size());
 
     List<Future<LogUploadResult>> futureResults = new ArrayList<>();
 
@@ -204,13 +202,13 @@ public class LogAgentManager extends Thread {
       }
 
     } catch (Exception e) {
-      logger.info("Exception occurred while uploading the files {}", e.getMessage());
+      log.info("Exception occurred while uploading the files {}", e.getMessage());
     }
 
     try {
       LogUtils.writeLogConfigMapToDisk(recoveryMap, new File(this.logAgentConfig.getRecoveryPath()));
     } catch (Exception e) {
-      logger.info("Exception occurred while writing the recovery map to disk: {}", e.getMessage());
+      log.info("Exception occurred while writing the recovery map to disk: {}", e.getMessage());
     }
 
   }
