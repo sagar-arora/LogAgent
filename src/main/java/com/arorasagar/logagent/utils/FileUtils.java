@@ -1,8 +1,7 @@
 package com.arorasagar.logagent.utils;
 
 import com.arorasagar.logagent.LogAgentConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,10 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.GZIPOutputStream;
 
+@Slf4j
 public final class FileUtils {
-  private static final Logger logger = LoggerFactory.getLogger(FileUtils.class);
   private FileUtils() {}
-
 
   public static File archiveFile(String tmpDir, File fileToUpload) throws IOException {
 
@@ -35,7 +33,7 @@ public final class FileUtils {
       }
       Files.createFile(compressedFileToUploadPath);
     }
-    logger.info("Path found : {}", compressedFileToUploadPath.toString());
+    log.info("Path found : {}", compressedFileToUploadPath.toString());
     FileUtils.compressGzip(fileToUpload.toPath(), compressedFileToUploadPath);
     return compressedFileToUploadPath.toFile();
   }
@@ -112,7 +110,7 @@ public final class FileUtils {
 
         @Override
         public FileVisitResult visitFileFailed(Path file, IOException exc) throws IOException {
-          logger.warn("Failed to visit {}, reason: {}", file.toAbsolutePath(), exc.toString());
+          log.warn("Failed to visit {}, reason: {}", file.toAbsolutePath(), exc.toString());
           return FileVisitResult.CONTINUE;
         }
       });
@@ -155,7 +153,7 @@ public final class FileUtils {
         gos.write(buffer, 0, len);
       }
     } catch (Exception e) {
-      logger.info("Exception occurred {}", e.getMessage());
+      log.info("Exception occurred {}", e.getMessage());
     }
     }
   }
