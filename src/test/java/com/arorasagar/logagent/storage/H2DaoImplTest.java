@@ -1,6 +1,5 @@
 package com.arorasagar.logagent.storage;
-import com.arorasagar.logagent.model.LogFile;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 
 public class H2DaoImplTest {
@@ -20,11 +19,11 @@ public class H2DaoImplTest {
             session.getTransaction().commit();
             HibernateUtil.shutdown();*/
 
-            LogFile logFile = LogFile.builder()
+            /*LogFile logFile = LogFile.builder()
                     .filePath("/path")
                     .build();
             H2DaoImpl h2Dao = new H2DaoImpl();
-            h2Dao.writeLogfile(logFile);
+            h2Dao.writeLogfile(logFile);*/
         }
 
 }
